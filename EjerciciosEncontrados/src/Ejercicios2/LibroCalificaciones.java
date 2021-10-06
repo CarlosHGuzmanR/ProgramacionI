@@ -6,7 +6,7 @@ public class LibroCalificaciones {
     private String nombreDelCurso;
     
     public LibroCalificaciones( String nombre ){
-        nombreDelCurso = nombre;
+        this.nombreDelCurso = nombre;
     }
     public void establecerNombreDelCurso( String nombre){
         nombreDelCurso = nombre;
@@ -23,18 +23,29 @@ public class LibroCalificaciones {
         int total; 
         int contadorCalif;
         int calificacion;
-        int promedio;
+        double promedio;
         
         total = 0;
         contadorCalif = 1;
-        while( contadorCalif <= 10){
-            System.out.print("Escribe la calificacion: ");
-            calificacion = entrada.nextInt();
+        
+        System.out.print("Escriba calificacion 0-1 para terminar: ");
+        calificacion = entrada.nextInt();
+        while( calificacion != -1){
             total = total + calificacion;
             contadorCalif = contadorCalif + 1;
+            System.out.println("escriba calificacion 0 -1 para terminar: ");
+            calificacion = entrada.nextInt();
         }
+        
+        if( contadorCalif != 0){
+            promedio = (double) total / contadorCalif;
+            System.out.printf("\nel total de las %d calificaciones introducidas es %d\n",
+                    contadorCalif, total);
+            System.out.printf("El promedio de la clase es %.2f\n", promedio);
+        }
+        
         promedio = total / 10;
-        System.out.printf("\nEl taotl de las 10 calificaicones es %d\n", total);
-        System.out.printf("El prp,dop de la clase es %d\n", promedio);
+        System.out.printf("\nEl total de las 10 calificaicones es %d\n", total);
+        System.out.printf("El promedio de la clase es %d\n", promedio);
     }
 }
